@@ -142,4 +142,4 @@ jobs:
             - -c
             - |
               cf login -a {{cf-api}} -u {{cf-username}} -p {{cf-password}} -o {{cf-org}} -s {{cf-space-dev}}
-              cf create-user-provided-service config-server -p '{"uri":"http://config-server-dev-metflix.cfapps.io"}'
+              cf create-user-provided-service config-server -p '{"uri":"http://config-server-metflix-dev.cfapps.io"}'
