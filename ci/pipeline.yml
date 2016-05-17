@@ -17,7 +17,7 @@ resources:
   - name: m2
     type: docker-image
     source:
-      repository: making/m2-metflix
+      repository: {{docker-repo}}
 
 jobs:
   - name: config-server-unit
@@ -62,14 +62,13 @@ jobs:
           inputs:
             - name: config-server-repo
               path: repo
-            - name: metflix-repo
             - name: m2
           outputs:
             - name: output
           run:
             path: sh
             args:
-            - metflix-repo/ci/tasks/package.sh
+            - repo/ci/tasks/package.sh
       - put: cf
         params:
           manifest: config-server-repo/manifest.yml
