@@ -25,7 +25,6 @@ jobs:
     plan:
       - get: config-server-repo
         trigger: true
-      - get: metflix-repo
       - get: m2
       - task: unit
         config:
@@ -38,18 +37,16 @@ jobs:
           inputs:
             - name: config-server-repo
               path: repo
-            - name: metflix-repo
             - name: m2
           run:
             path: sh
             args:
-            - metflix-repo/ci/tasks/unit.sh
+            - repo/ci/tasks/unit.sh
   - name: config-server-deploy
     plan:
       - get: config-server-repo
         trigger: true
         passed: [ config-server-unit ]
-      - get: metflix-repo
       - get: m2
       - task: package
         config:
